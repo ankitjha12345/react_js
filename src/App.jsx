@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { Component } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+class SimpleOnKeyUp extends Component {
+  
+  constructor() {
+    super();
+    this.state = {};
+    this.onKeyUp = this.onKeyUp.bind(this);
+  }
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  onKeyUp(event) {
+    console.log(event.target.value);
+      this.setState({ inputValue: event.target.value });
+  }
+
+  render() {
+    const { inputValue } = this.state;
+
+    return (
+      <div className="App">
+        <form>
+          <input type="text" onKeyUp={this.onKeyUp} />
+        </form>
+        
+        <span>you're typing {inputValue}</span>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    );
+  }
 }
 
-export default App
+export default SimpleOnKeyUp;
