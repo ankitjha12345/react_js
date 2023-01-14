@@ -7,7 +7,6 @@ class SimpleOnKeyUp extends Component {
     this.state = {};
     this.onKeyUp = this.onKeyUp.bind(this);
   }
-
   onKeyUp(event) {
     console.log(event.target.value);
       this.setState({ inputValue: event.target.value });
